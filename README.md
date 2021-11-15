@@ -1,4 +1,4 @@
-# temporary-name (title work-in-progress)
+# temporary-name (title work-in-progress, maybe Interval™)
 
 #### Authors:
 Jenner Dulce, Haustin Kimbrough, Patrick Laurion, Matt Cho
