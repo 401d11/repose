@@ -2,14 +2,15 @@
 
 ## Vision
 
-- Example: EmployeMee is the premier recruiting website designed to streamline and modernize the hiring process for business looking for qualified employees. EmployMee stores a database of potential employees that hiring business can filter, review, and ultimately notify the other party for job offers. EmployMee is useful for both users that sign up for the website looking for job opportunities and businesses that are looking to offer specific opportunities for qualified individuals rather than sifting through a pile of resumes.
-- Convinent andriod application
+- The most convenient stretching mobile application with a personalized experience to provide users physical healing and mental focus to improve quality of life. rePose's purpose is to improve flexibility and decrease stress on muscle and joints. Our vision is to have rePose downloaded on every modern employed and unemployed person's phone for use during 10-minute breaks, lunch hours, and spare time at home.
+
+Our Strategy: 
+- Convenient Android application
 - Fight sedentary lifestyle
 - Promote physical activity and wellness
-- Mindfullness and focus
-- Easte stress
-- Designed to help people b ecome more active in their daily routine
-
+- Mindfulness and focus
+- Ease stress
+- Designed to help people become more active in their daily routine
 
 ## Scope
 
@@ -17,13 +18,15 @@
   - A signup/login for users.
   - Allow users to select a routine of their liking.
   - Timer functionality that resets on end of stretches and restarts.
-  - Changes streches after completes sets.
+  - Changes stretch after completing sets.
   - Visually appealing and theme.
 
 ### MVP
 
-- Example: A website that allows businesses and individuals to sign up and login. Individuals will have a profile page to display their info. Businesses will be able to hit a button and add individuals to their "interested/contact" list. Presumably, the EmployMee company would then notify the individual about their prospective job opportunity, job info, interviews, etc.
-- 
+- Mobile application that allows all users access to stretches pre-defined and grouped by muscle group.
+- Provide users imagery and directions on how to properly perform the stretches.
+- Allow users to select a specific stretch based on their needs.
+- Allow users option to start/stop/pause an exercise.
 
 ### Stretch Goals
 
