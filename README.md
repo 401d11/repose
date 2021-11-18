@@ -1,82 +1,81 @@
-# temporary-name (title work-in-progress, maybe Interval™)
-
-#### Authors:
-Jenner Dulce, Haustin Kimbrough, Patrick Laurion, Matt Cho
-
-## Overview
-A yoga timer app that allows users to select a stretch and displays a timer that notifies the user when to swap poses.
+# rePose
 
 **Authors**:
 
-[<img alt="jenner profile pic" height="175" src="./src/main/resources/static/images/jenner.jpeg" width="150"/>](https://github.com/jennerdulce)
-[<img alt="haustin profile pic" height="175" src="./src/main/resources/static/images/haustin.png" width="150"/>](https://github.com/hkimbrough22)
-[<img alt="patrick profile pic" height="175" src="./src/main/resources/static/images/patrick.jpeg" width="150"/>](https://github.com/plaurion1989)
-[<img alt="matt profile pic" height="175" src="./src/main/resources/static/images/matt.jpeg" width="150"/>](https://github.com/MattyCho)
+[<img alt="jenner profile pic" height="175" src="./assets/jenner.jpeg" width="150"/>](https://github.com/jennerdulce)
+[<img alt="haustin profile pic" height="175" src="./assets/haustin.png" width="150"/>](https://github.com/hkimbrough22)
+[<img alt="patrick profile pic" height="175" src="./assets/patrick.jpeg" width="150"/>](https://github.com/plaurion1989)
+[<img alt="matt profile pic" height="175" src="./assets/matt.jpeg" width="150"/>](https://github.com/MattyCho)
+
+## Overview
+
+rePose is a convenient android application made for the busy professionals of today's modern world. rePose stores several pre-built stretching routines comprised of time-efficient, muscle-targeted stretches to help get your blood flowing. rePose offers users the ability to select their needed exercise and provides a countdown timer to allow users to know how long they've been stretching.
+
+### Why rePose?
+Approximately [11% to 40%](https://www.thegoodbody.com/chronic-pain-statistics/) of US adults are living with chronic pain - 60 million people suffer worldwide - with many claiming low back pain.
+
+![Most Common Types of Chronic Pain](assets/chronic-pain1.png)
+
+Importantly, the US and US businesses lose an average of about $322 billion a year due to missed days of work that are tied to chronic pain.
+
+Perhaps most importantly, 85% of patients with chronic pain are affected by severe depression.
+
+### How to Deal with It
+
+A wide range of prescriptions often come from doctors these days to deal with chronic pain. About 20% of chronic pain patients who visit a physician receive an opioid prescription, despite research showing it does not improve quality of life. Online resources like WebMD recommend exercise and [cutting out stress, alcohol, and smoking](https://www.webmd.com/pain-management/guide/11-tips-for-living-with-chronic-pain) when possible. The Mayo Clinic Health System offers advice that rePose's developers believed in: [Stretch, practice good posture and move gently](https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/8-tips-for-managing-chronic-pain)
+
+We wanted to be a part of the solution through giving our users the ability to thoughtlessly, but actively, contribute to their recovery and overall health through full-body static stretches.
 
 **Version**: 1.0.0
 
-[Active Site](https://employmee-401.herokuapp.com/)
-
-## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
-
-**\_employMee()** is a connection-based professional employment services recruiting website designed to align skilled software developers with motivated employers looking to hire without the hassle. At **\_employMee()**, developers from all languages, experience levels, and backgrounds are offered a simple, no-stress alternative to the hiring process. Developers can leisurely job hunt without worry of discrimination against age, race, or gender through our simplified presentation of their skills which omits these identifiers. Employers are offered quick, targeted searches of developers based on the desired language which allows for an informed decision when filling a position. We guarantee commitment from our applicants!
+[comment]: <> ([Active Site]&#40;https://employmee-401.herokuapp.com/&#41; add actual heroku link if needed)
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-**_employMee()** primarily uses the Java language with the [Gradle](https://gradle.org/) build system and the [Spring framework](https://spring.io/projects/spring-framework), specifically [SpringMVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html). Initial setup is done with [Spring Initializr](https://start.spring.io/), selecting the following dependencies:
-1. [Andriod Studios](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools)
-2. [AWS Cognito](https://spring.io/projects/spring-ws)
-3. [AWS Amplify](https://www.thymeleaf.org/)
-4. [AWS S3](https://spring.io/projects/spring-security)
-5. [Espresso](https://spring.io/projects/spring-data-jpa)
 
-**_employMee()** uses the Thymeleaf template engine for dynamic HTML displays and [Bootstrap](https://getbootstrap.com/) for elegant styling. Core communication functionality is created using [Twilio](https://www.twilio.com/), specifically the [SendGrid](https://www.twilio.com/sendgrid/email-api) email API and [Gmail](https://www.google.com/gmail/).
-
-The application is hosted on [Heroku](https://www.heroku.com/) with a remote database linked to [PostgreSQL](https://www.postgresql.org/) using the Heroku Postgres add-on and [pgAdmin 4](https://www.pgadmin.org/) graphical user interface to help manage it.
 
 ## Wireframing
 
 ### 1. Sign Up
 
-<img src= "./assets/signup.png" alt="index.html wireframe" width="350"/>
+<img src="./assets/signup.png" alt="signupActivity wireframe" width="350"/>
 
-### 2. Sign Up
+### 2. Login
 
-<img src= "./assets/signup.png" alt="signup.html wireframe" width="350"/>
+<img src="./assets/login.png" alt="loginActivity wireframe" width="350"/>
 
-### 3. Login
+### 3. Home
 
-<img src= "./assets/login.png" alt="login.html wireframe" width="350"/>
+<img src="./assets/home.png" alt="mainActivity wireframe" width="350"/>
 
-### 4. Discover
+### 4. Routines
 
-<img src= "./assets/discover.png" alt="discover.html wireframe" width="350"/>
+<img src="./assets/routines.png" alt="routinesActivity wireframe" width="350"/>
 
-### 5. Business Profile
+### 5. Stretch
 
-<img src= "./assets/profileBusiness.png" alt="business profile wireframe" width="350"/>
+<img src="./assets/stretchlayout.png" alt="stretchActivity wireframe" width="350"/>
 
-### 6. Candidate Profile
+### 6. Finished!
 
-<img src= "./assets/profileCandidate.png" alt="candidate profile wireframe" width="350"/>
+<img src="./assets/finished.png" alt="finishedActivity wireframe" width="350"/>
 
 ## User Stories
 
-- As a hiring manager, I want a simple layout of potential employees, so that I can find qualified candidates more efficiently.
-- As a startup looking for employees, I want a wide variety of job-seeking individuals, so that we can hire the best people.
-- As a software developer, I want a way to display my skills/qualifications, so that companies can reach out to me for job opportunities.
-- As a business, I want a way to filter potential candidates, so that I don't have to look through hundreds of resumes.
-- As a business owner, I want a way to connect with prospecitve employees that meet my qualifications.
+- As a user, I want a simple layout that displays the variety of stretches that are available to me, so that I can choose the muscle group I would like to work on.
+- As a user, I want a timer that keeps track of the duration for my stretches, so that I can focus on my breathing while during my stretches.
+- As a user, I would like to be notified by a sound queue to let me know that my stretch is ending, so that I can prepare to set up for the next stretch.
+- As a user, I would like to have a few seconds in between stretches, so that I can rest and relax for a few seconds before the next stretch
+- As a user, I would like to keep track of my sets and reps, so that I know how many sets and reps I have left.
 
 ## Domain Modeling
 
-![Domain Model](./assets/domainModel.png)
+![Domain Model](./assets/domainmodel.png)
 
 ## Database Schema
 
-![Database](./assets/dbSchema.png)
+![Database](./assets/schema.png)
 
 ## Other
 
@@ -87,8 +86,6 @@ The application is hosted on [Heroku](https://www.heroku.com/) with a remote dat
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 - [Miro](https://miro.com/) for initial wireframing.
 - [Trello](https://trello.com/) for project management.
-- [Spring Initializr](https://start.spring.io/) for initial setup.
 - [Canva](https://www.canva.com/) for logo design.
-- [Gmail](https://www.google.com/gmail/) for setting up company email.
 - [Stack Overflow](https://stackoverflow.com/) for the struggles.
 - [Code Fellows Code 401 Class Repo](https://github.com/codefellows/seattle-java-401d11) for general guidance.

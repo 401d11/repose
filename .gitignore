@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/java,macos,android,androidstudio
 
+.idea
+
 # Files for the ART/Dalvik VM
 *.dex
 
