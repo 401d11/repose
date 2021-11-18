@@ -1,0 +1,10 @@
+type Stretch @model {
+  id: ID!
+  name: String!
+  length: Int!
+  sets: Int
+  reps: Int
+  description: String
+  imageKey: String
+  muscleGroup: String
+}

@@ -1,0 +1,43 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateStretch {
+  onCreateStretch {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateStretch {
+  onUpdateStretch {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteStretch {
+  onDeleteStretch {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}

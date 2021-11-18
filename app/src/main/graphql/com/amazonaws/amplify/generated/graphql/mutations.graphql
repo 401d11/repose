@@ -1,0 +1,52 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateStretch(
+  $input: CreateStretchInput!
+  $condition: ModelStretchConditionInput
+) {
+  createStretch(input: $input, condition: $condition) {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateStretch(
+  $input: UpdateStretchInput!
+  $condition: ModelStretchConditionInput
+) {
+  updateStretch(input: $input, condition: $condition) {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteStretch(
+  $input: DeleteStretchInput!
+  $condition: ModelStretchConditionInput
+) {
+  deleteStretch(input: $input, condition: $condition) {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
