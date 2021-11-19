@@ -6,10 +6,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRecyclerViewAdapter.RoutinesViewHolder> {
@@ -33,13 +36,21 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
     public void onBindViewHolder(@NonNull RoutinesRecyclerViewAdapter.RoutinesViewHolder holder, int position) {
         String routineName = routines.get(position);
         View routineNameFragment = holder.itemView;
-        Button currentRoutineFragmentButton =   routineNameFragment.findViewById(R.id.currentRoutineFragmentButton);
+        Button currentRoutineFragmentButton = routineNameFragment.findViewById(R.id.currentRoutineFragmentButton);
         currentRoutineFragmentButton.setText(routineName);
+
+        holder.itemView.setOnClickListener(view -> {
+
+        });
+    }
+
+    public static List<Stretch> getStretches() {
+        return null;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return routines.size();
     }
 
 

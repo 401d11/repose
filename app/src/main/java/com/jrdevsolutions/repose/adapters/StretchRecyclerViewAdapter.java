@@ -38,7 +38,7 @@ public class StretchRecyclerViewAdapter extends RecyclerView.Adapter<StretchRecy
     public void onBindViewHolder(@NonNull StretchViewHolder holder, int position) {
         Stretch stretch = stretchList.get(position);
         View stretchFragment = holder.itemView;
-        TextView currentStretchFragmentTextView =   stretchFragment.findViewById(R.id.currentStretchFragmentTextView);
+        TextView currentStretchFragmentTextView = stretchFragment.findViewById(R.id.currentStretchFragmentTextView);
         String stretchString = stretch.getName();
         currentStretchFragmentTextView.setText(stretchString);
     }

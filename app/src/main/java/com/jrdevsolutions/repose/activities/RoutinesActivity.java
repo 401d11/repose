@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 import com.jrdevsolutions.repose.adapters.RoutinesRecyclerViewAdapter;
@@ -23,6 +25,19 @@ public class RoutinesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routines);
+
+//        Amplify.API.query(
+//                ModelQuery.list(Stretch.class),
+//                success -> {
+//                    List<Stretch> stretchList = new ArrayList<>();
+//                    for (Stretch stretch : success.getData()) {
+//                        stretchList.add(stretch);
+//                    }
+//                },
+//                failure -> {
+//
+//                }
+//        );
 
         List<Stretch> stretchList = new ArrayList<>();
         RecyclerView stretchesRecyclerView = findViewById(R.id.stretchesRecyclerView);
