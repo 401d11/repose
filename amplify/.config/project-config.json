@@ -1,10 +1,10 @@
 {
-  "projectName": "repose",
-  "version": "3.1",
-  "frontend": "android",
   "providers": [
     "awscloudformation"
   ],
+  "projectName": "repose",
+  "version": "3.1",
+  "frontend": "android",
   "android": {
     "config": {
       "ResDir": "app/src/main/res"
