@@ -10,6 +10,11 @@
       "StackName": "amplify-repose-dev-110745",
       "StackId": "arn:aws:cloudformation:us-west-2:662159702771:stack/amplify-repose-dev-110745/d6cb9210-48a2-11ec-91a4-0ac6aadc168f",
       "AmplifyAppId": "d3c9to6sjdgili"
+    },
+    "categories": {
+      "auth": {
+        "reposede282bc0": {}
+      }
     }
   }
 }
