@@ -1,0 +1,14 @@
+{
+  "resourceName": "reposestorage",
+  "policyUUID": "a3ae5f20",
+  "bucketName": "repose380077be31f74f328dab89efabc419ef",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
