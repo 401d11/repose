@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">rePose</string>
+    <string name="AppTitle">rePose</string>
+    <string name="phWelcomeUser">Welcome Username</string>
+    <string name="Routines">Routines</string>
+    <string name="LogoutButton">Logout</string>
+    <string name="GoodJob">Good Job!</string>
+    <string name="Restart">Restart</string>
+    <string name="HomeButton">Home</string>
+    <string name="AlreadyLogin">Already have an account? Log in here!</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="SignUpHere">Sign up here!</string>
+    <string name="Login">Login</string>
+    <string name="Start">Start</string>
+    <string name="TimeLeft">00:00s</string>
+    <string name="StretchDescription">Description of the stretch</string>
+    <string name="Sets">Sets</string>
+    <string name="Reps">Reps</string>
+    <string name="RepsLeft">1 / 4</string>
+    <string name="SetsLeft">1 / 2</string>
+    <string name="Pause">Pause</string>
+    <string name="End">End</string>
+    <string name="VerificationCode">Verification Code</string>
+    <string name="Verify">Verify</string>
 </resources>

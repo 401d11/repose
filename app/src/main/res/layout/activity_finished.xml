@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.FinishedActivity">
+
+    <TextView
+        android:id="@+id/finishedTitletextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/GoodJob"
+        android:textSize="60sp"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="109dp" />
+
+    <Button
+        android:id="@+id/finishedRestartButton"
+        android:layout_width="155dp"
+        android:layout_height="44dp"
+        android:text="@string/Restart"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="403dp" />
+
+    <Button
+        android:id="@+id/finishedHomeButton"
+        android:layout_width="155dp"
+        android:layout_height="44dp"
+        android:text="@string/HomeButton"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="472dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Repose">
         <activity
+            android:name=".activities.SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SignUpVerifyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.StretchPageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.RoutinesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.FinishedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
