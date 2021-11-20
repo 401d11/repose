@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
@@ -21,23 +22,12 @@ public class RoutinesActivity extends AppCompatActivity {
     StretchRecyclerViewAdapter stretchRecyclerViewAdapter;
     RoutinesRecyclerViewAdapter routinesRecyclerViewAdapter;
 
+    public final static String TAG = "jrdevsolutions_repose_routinesactivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routines);
-
-//        Amplify.API.query(
-//                ModelQuery.list(Stretch.class),
-//                success -> {
-//                    List<Stretch> stretchList = new ArrayList<>();
-//                    for (Stretch stretch : success.getData()) {
-//                        stretchList.add(stretch);
-//                    }
-//                },
-//                failure -> {
-//
-//                }
-//        );
 
         List<Stretch> stretchList = new ArrayList<>();
         RecyclerView stretchesRecyclerView = findViewById(R.id.stretchesRecyclerView);
@@ -45,7 +35,7 @@ public class RoutinesActivity extends AppCompatActivity {
         stretchesRecyclerView.setLayoutManager(lm);
         stretchRecyclerViewAdapter = new StretchRecyclerViewAdapter(this, stretchList);
         stretchesRecyclerView.setAdapter(stretchRecyclerViewAdapter);
-
+        
         List<String> routineNames = new ArrayList<>();
         routineNames.add("Neck");
         routineNames.add("Back");
@@ -54,7 +44,7 @@ public class RoutinesActivity extends AppCompatActivity {
         RecyclerView routinesRecyclerView = findViewById(R.id.routinesRecyclerView);
         RecyclerView.LayoutManager lm2 = new LinearLayoutManager(this);
         routinesRecyclerView.setLayoutManager(lm2);
-        routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames);
+        routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames, stretchRecyclerViewAdapter);
         routinesRecyclerView.setAdapter(routinesRecyclerViewAdapter);
     }
 }
