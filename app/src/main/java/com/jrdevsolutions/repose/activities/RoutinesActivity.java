@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoutinesActivity extends AppCompatActivity {
-    StretchRecyclerViewAdapter stretchRecyclerViewAdapter;
     RoutinesRecyclerViewAdapter routinesRecyclerViewAdapter;
+    StretchRecyclerViewAdapter stretchRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,6 @@ public class RoutinesActivity extends AppCompatActivity {
 //
 //                }
 //        );
-
         List<Stretch> stretchList = new ArrayList<>();
         RecyclerView stretchesRecyclerView = findViewById(R.id.stretchesRecyclerView);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
@@ -54,7 +54,14 @@ public class RoutinesActivity extends AppCompatActivity {
         RecyclerView routinesRecyclerView = findViewById(R.id.routinesRecyclerView);
         RecyclerView.LayoutManager lm2 = new LinearLayoutManager(this);
         routinesRecyclerView.setLayoutManager(lm2);
-        routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames);
+        routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames, stretchRecyclerViewAdapter);
         routinesRecyclerView.setAdapter(routinesRecyclerViewAdapter);
+
+        Button startRoutine = findViewById(R.id.startRoutine);
+        startRoutine.setOnClickListener(view -> {
+            Intent intent = new Intent(RoutinesActivity.this, StretchPageActivity.class);
+            intent.putExtra("Stretches", stretchRecyclerViewAdapter.getStretchList());
+            startActivity(intent);
+        });
     }
 }
