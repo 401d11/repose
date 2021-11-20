@@ -48,10 +48,9 @@ public class StretchRecyclerViewAdapter extends RecyclerView.Adapter<StretchRecy
 
     public List<Stretch> getStretchList() {return stretchList; }
 
-    public void setTaskItemList(List<Stretch> stretchList){
+    public void setStretchList(List<Stretch> stretchList){
         this.stretchList = stretchList;
     }
-
 
     public static class StretchViewHolder extends RecyclerView.ViewHolder {
         public StretchViewHolder(@NonNull View itemView){
