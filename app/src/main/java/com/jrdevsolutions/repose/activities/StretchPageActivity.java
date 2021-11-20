@@ -12,7 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StretchPageActivity extends AppCompatActivity {
 
@@ -22,6 +28,7 @@ public class StretchPageActivity extends AppCompatActivity {
     long millisLeft = 30000;
     long min = 0;
     long sec = 0;
+    List<Stretch> stretchList = new ArrayList<>();
 
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
@@ -58,6 +65,25 @@ public class StretchPageActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretch_page);
+
+        Intent intent = getIntent();
+        ArrayList<String> stretchIdList = intent.getStringArrayListExtra("Stretches");
+
+        Amplify.API.query(
+                ModelQuery.list(Stretch.class),
+                success -> {
+                    for (Stretch stretch : success.getData()) {
+                        for (String idString : stretchIdList) {
+                            if (idString.equals(stretch.getId())) {
+                                stretchList.add(stretch);
+                            }
+                        }
+                    }
+                },
+                failure -> {
+
+                }
+        );
 
         timerTextView = (TextView) findViewById(R.id.timerTextView);
 

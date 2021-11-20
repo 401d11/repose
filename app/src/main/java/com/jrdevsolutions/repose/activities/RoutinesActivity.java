@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Button;
 
@@ -15,6 +17,7 @@ import com.jrdevsolutions.repose.R;
 import com.jrdevsolutions.repose.adapters.RoutinesRecyclerViewAdapter;
 import com.jrdevsolutions.repose.adapters.StretchRecyclerViewAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class RoutinesActivity extends AppCompatActivity {
         stretchesRecyclerView.setLayoutManager(lm);
         stretchRecyclerViewAdapter = new StretchRecyclerViewAdapter(this, stretchList);
         stretchesRecyclerView.setAdapter(stretchRecyclerViewAdapter);
-        
+
         List<String> routineNames = new ArrayList<>();
         routineNames.add("Neck");
         routineNames.add("Back");
@@ -46,5 +49,17 @@ public class RoutinesActivity extends AppCompatActivity {
         routinesRecyclerView.setLayoutManager(lm2);
         routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames, stretchRecyclerViewAdapter);
         routinesRecyclerView.setAdapter(routinesRecyclerViewAdapter);
+
+        Button startRoutine = findViewById(R.id.startRoutine);
+        startRoutine.setOnClickListener(view -> {
+            Intent intent = new Intent(RoutinesActivity.this, StretchPageActivity.class);
+            List<Stretch> stretchList1 = stretchRecyclerViewAdapter.getStretchList();
+            ArrayList<String> stretchIds = new ArrayList<>();
+            for (Stretch stretch : stretchList1) {
+                stretchIds.add(stretch.getId());
+            }
+            intent.putStringArrayListExtra("Stretches", stretchIds);
+            startActivity(intent);
+        });
     }
 }
