@@ -58,9 +58,10 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
                                 stretchList.add(stretch);
                             }
                         };
-                        runOnUiThread(() -> {});
-                        stretchRecyclerViewAdapter.setStretchList(stretchList);
-                        stretchRecyclerViewAdapter.notifyDataSetChanged();
+                        runOnUiThread(() -> {
+                            stretchRecyclerViewAdapter.setStretchList(stretchList);
+                            stretchRecyclerViewAdapter.notifyDataSetChanged();
+                        });
                         Log.i(TAG, "success");
                     },
                     failure -> {
