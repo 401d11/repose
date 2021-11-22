@@ -30,7 +30,7 @@ public class StretchPageActivity extends AppCompatActivity {
     CountDownTimer cdTimer;
     TextView timerTextView;
     Button timerButton;
-    long millisLeft = 5000;
+    long millisLeft = (5 * 1000) + 999;
     long min = 0;
     long sec = 0;
     public List<Stretch> stretchList = new ArrayList<>();
@@ -49,7 +49,7 @@ public class StretchPageActivity extends AppCompatActivity {
         @SuppressLint("DefaultLocale")
         @Override
         public void run() {
-            cdTimer = new CountDownTimer(millisLeft, 1000) {
+            cdTimer = new CountDownTimer(millisLeft, 100) {
                 @SuppressLint("SetTextI18n")
                 public void onTick(long milliTillFinish) {
 
@@ -65,7 +65,7 @@ public class StretchPageActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    millisLeft = 5000;
+                    millisLeft = (5 * 1000) + 999;
                     timerTextView.setText("0" + Long.toString(min) + ":" + Long.toString(sec) + "s");
                     currentReps++;
                     if (currentReps > stretchList.get(currentStretchIndex).getReps()) {
