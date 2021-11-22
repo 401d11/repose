@@ -21,5 +21,12 @@ export type AmplifyDependentResourcesAttributes = {
             "BucketName": "string",
             "Region": "string"
         }
+    },
+    "predictions": {
+        "stretchSpeechGenerator": {
+            "region": "string",
+            "language": "string",
+            "voice": "string"
+        }
     }
 }

@@ -1,0 +1,14 @@
+{
+    "resourceName": "stretchSpeechGenerator",
+    "convertPolicyName": "speechGeneratorPolicy8eebc6cd",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "convertType": "speechGenerator",
+    "language": "en-US",
+    "voice": "Matthew",
+    "access": "auth"
+}

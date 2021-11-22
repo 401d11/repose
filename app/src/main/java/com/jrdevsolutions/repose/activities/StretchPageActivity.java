@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -20,6 +21,11 @@ import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +33,7 @@ public class StretchPageActivity extends AppCompatActivity {
 
     public final static String TAG = "jrdevsolutions_repose_stretchpageactivity";
 
+    private final MediaPlayer mp = new MediaPlayer();
     CountDownTimer cdTimer;
     TextView timerTextView;
     Button timerButton;
@@ -87,6 +94,7 @@ public class StretchPageActivity extends AppCompatActivity {
                             repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
                             setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
                             getImageFileFromS3AndSetImageView(stretchList.get(currentStretchIndex).getImageKey());
+                            playString("The next stretch is " + stretchList.get(currentStretchIndex).getName());
                         }
                     }
                     repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
@@ -125,7 +133,7 @@ public class StretchPageActivity extends AppCompatActivity {
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(0).getReps());
                         setsLeftTextView.setText(currentSets + " / " + stretchList.get(0).getSets());
                         stretchDescription.setText(stretchList.get(0).getDescription());
-
+                        playString("The first stretch will be  " + stretchList.get(0).getName());
                     });
                 },
                 failure -> {
@@ -160,6 +168,14 @@ public class StretchPageActivity extends AppCompatActivity {
         });
     }
 
+    public void playString(String string){
+        Amplify.Predictions.convertTextToSpeech(
+                string,
+                result -> playAudio(result.getAudioData()),
+                error -> Log.e(TAG, "Conversion failed", error)
+        );
+    }
+
     public void timerPause() {
         cdTimer.cancel();
     }
@@ -186,6 +202,24 @@ public class StretchPageActivity extends AppCompatActivity {
                         Log.e(TAG, "Failed to download image from S3! Key is: " + s3ImageKey + " with error: " + failure.getMessage(), failure);
                     }
             );
+        }
+    }
+
+    protected void playAudio(InputStream data) {
+        File mp3File = new File(getCacheDir(), "audio.mp3");
+
+        try (OutputStream out = new FileOutputStream(mp3File)) {
+            byte[] buffer = new byte[8 * 1_024];
+            int bytesRead;
+            while ((bytesRead = data.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+            mp.reset();
+            mp.setOnPreparedListener(MediaPlayer::start);
+            mp.setDataSource(new FileInputStream(mp3File).getFD());
+            mp.prepareAsync();
+        } catch (IOException error) {
+            Log.e(TAG, "Error writing audio file", error);
         }
     }
 }
