@@ -52,5 +52,12 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": []
     }
+  },
+  "predictions": {
+    "stretchSpeechGenerator": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
+    }
   }
 }
