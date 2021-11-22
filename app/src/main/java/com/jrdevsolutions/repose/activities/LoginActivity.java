@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amplifyframework.core.Amplify;
@@ -38,6 +39,12 @@ public class LoginActivity extends AppCompatActivity {
                         Log.i(TAG, "Login Failed: " + failure.toString());
                         runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Could not log in that user!", Toast.LENGTH_SHORT).show());
                     });
+        });
+
+        TextView signUpHereTextView = findViewById(R.id.signUpHereTextView);
+        signUpHereTextView.setOnClickListener( view -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
     }
 }

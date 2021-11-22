@@ -23,9 +23,9 @@ public class SignUpVerifyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         EditText verifyEmailEditText = findViewById(R.id.verifyEmailEditText);
         verifyEmailEditText.setText(intent.getStringExtra(SignUpActivity.NEW_USER_EMAIL));
-        EditText verifyCodeEditText = findViewById(R.id.loginEmailEditText);
+        EditText verifyCodeEditText = findViewById(R.id.verifyCodeEditText);
 
-        Button verifySignUpButton = findViewById(R.id.loginButton);
+        Button verifySignUpButton = findViewById(R.id.verifySignUpButton);
         verifySignUpButton.setOnClickListener( view -> {
             String email = verifyEmailEditText.getText().toString();
             String verificationCode = verifyCodeEditText.getText().toString();
