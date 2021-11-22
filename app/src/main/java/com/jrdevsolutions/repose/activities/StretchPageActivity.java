@@ -86,6 +86,7 @@ public class StretchPageActivity extends AppCompatActivity {
                             stretchDescription.setText(stretchList.get(currentStretchIndex).getDescription());
                             repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
                             setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
+                            getImageFileFromS3AndSetImageView(stretchList.get(currentStretchIndex).getImageKey());
                         }
                     }
                     repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
@@ -118,12 +119,13 @@ public class StretchPageActivity extends AppCompatActivity {
                     setsLeftTextView = findViewById(R.id.setsLeftTextView);
                     repsLeftTextView = findViewById(R.id.repsLeftTextView);
                     stretchDescription = findViewById(R.id.stretchDescription);
-//                    getImageFileFromS3AndSetImageView(stretchList.get(0).getImageKey());
+                    getImageFileFromS3AndSetImageView(stretchList.get(0).getImageKey());
                     runOnUiThread(() -> {
                         stretchNameTextView.setText(stretchList.get(0).getName());
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(0).getReps());
                         setsLeftTextView.setText(currentSets + " / " + stretchList.get(0).getSets());
                         stretchDescription.setText(stretchList.get(0).getDescription());
+
                     });
                 },
                 failure -> {
