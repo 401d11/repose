@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amplifyframework.auth.AuthUserAttributeKey;
@@ -45,6 +46,12 @@ public class SignUpActivity extends AppCompatActivity {
                         Log.i(TAG, "Signup Failed: " + failure.toString());
                         runOnUiThread(() -> Toast.makeText(SignUpActivity.this, "Could not sign up that user!", Toast.LENGTH_SHORT).show());
                     });
+        });
+
+        TextView logInHereTextView = findViewById(R.id.logInHereTextView);
+        logInHereTextView.setOnClickListener( view -> {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
