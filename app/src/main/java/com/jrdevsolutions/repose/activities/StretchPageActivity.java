@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,18 +19,28 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StretchPageActivity extends AppCompatActivity {
 
+    public final static String TAG = "jrdevsolutions_repose_stretchpageactivity";
+
     CountDownTimer cdTimer;
     TextView timerTextView;
     Button timerButton;
-    long millisLeft = 30000;
+    long millisLeft = 5000;
     long min = 0;
     long sec = 0;
-    List<Stretch> stretchList = new ArrayList<>();
+    public List<Stretch> stretchList = new ArrayList<>();
+    int currentStretchIndex = 0;
+    TextView stretchNameTextView;
+    TextView setsLeftTextView;
+    TextView repsLeftTextView;
+    TextView stretchDescription;
+    int currentReps = 10;
+    int currentSets = 1;
 
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
@@ -53,9 +65,32 @@ public class StretchPageActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    timerTextView.setText(R.string.GoodJob);
-                    millisLeft = 30000;
-                    timerButton.setText(R.string.Start);
+                    millisLeft = 5000;
+                    timerTextView.setText("0" + Long.toString(min) + ":" + Long.toString(sec) + "s");
+                    currentReps++;
+                    if (currentReps > stretchList.get(currentStretchIndex).getReps()) {
+                        currentReps = 10;
+                        currentSets++;
+                        repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
+                        setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
+                    }
+                    if (currentSets > stretchList.get(currentStretchIndex).getSets()) {
+                        currentSets = 1;
+                        currentStretchIndex++;
+                        if (currentStretchIndex == stretchList.size()) {
+//                            timerButton.setText("Start");
+                            Intent intent = new Intent(StretchPageActivity.this, FinishedActivity.class);
+                            startActivity(intent);
+                        } else {
+                            stretchNameTextView.setText(stretchList.get(currentStretchIndex).getName());
+                            stretchDescription.setText(stretchList.get(currentStretchIndex).getDescription());
+                            repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
+                            setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
+                        }
+                    }
+                    repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
+                    setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
+                    timerHandler.postDelayed(timerRunnable, 000);
                 }
             }.start();
         }
@@ -79,9 +114,20 @@ public class StretchPageActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    stretchNameTextView = findViewById(R.id.stretchNameTextView);
+                    setsLeftTextView = findViewById(R.id.setsLeftTextView);
+                    repsLeftTextView = findViewById(R.id.repsLeftTextView);
+                    stretchDescription = findViewById(R.id.stretchDescription);
+//                    getImageFileFromS3AndSetImageView(stretchList.get(0).getImageKey());
+                    runOnUiThread(() -> {
+                        stretchNameTextView.setText(stretchList.get(0).getName());
+                        repsLeftTextView.setText(currentReps + " / " + stretchList.get(0).getReps());
+                        setsLeftTextView.setText(currentSets + " / " + stretchList.get(0).getSets());
+                        stretchDescription.setText(stretchList.get(0).getDescription());
+                    });
                 },
                 failure -> {
-
+                    Log.e(TAG, "Failed to grab stretches by ID:" + failure);
                 }
         );
 
@@ -120,5 +166,24 @@ public class StretchPageActivity extends AppCompatActivity {
         Log.i("min", Long.toString(min));
         Log.i("Sec", Long.toString(sec));
         timerHandler.postDelayed(timerRunnable, 0);
+    }
+
+    protected void getImageFileFromS3AndSetImageView(String s3ImageKey) {
+        if (s3ImageKey != null) {
+            Amplify.Storage.downloadFile(
+                    s3ImageKey,
+                    new File(getApplicationContext().getFilesDir(), s3ImageKey),
+                    success -> {
+                        Log.i(TAG, "Image download succesfully from S3 with name: " + success.getFile().getName());
+                        runOnUiThread( () -> {
+                            ImageView stretchPictureImageView = findViewById(R.id.stretchPictureImageView);
+                            stretchPictureImageView.setImageBitmap(BitmapFactory.decodeFile(success.getFile().getPath()));
+                        });
+                    },
+                    failure -> {
+                        Log.e(TAG, "Failed to download image from S3! Key is: " + s3ImageKey + " with error: " + failure.getMessage(), failure);
+                    }
+            );
+        }
     }
 }
