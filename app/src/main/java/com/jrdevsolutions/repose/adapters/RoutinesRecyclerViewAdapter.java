@@ -2,6 +2,8 @@ package com.jrdevsolutions.repose.adapters;
 
 import static com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 import com.jrdevsolutions.repose.activities.RoutinesActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
         View routineNameFragment = holder.itemView;
         Button currentRoutineFragmentButton = routineNameFragment.findViewById(R.id.currentRoutineFragmentButton);
         currentRoutineFragmentButton.setText(routineName);
+        currentRoutineFragmentButton.setTypeface(Typeface.create("SANS_SERIF", Typeface.BOLD));
 
         currentRoutineFragmentButton.setOnClickListener(view -> {
             Amplify.API.query(
@@ -90,6 +94,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
     }
 
     public static class RoutinesViewHolder extends RecyclerView.ViewHolder {
+
         public RoutinesViewHolder(@NonNull View itemView){
             super(itemView);
         }

@@ -35,6 +35,7 @@
 
     <Button
         android:id="@+id/logoutButton"
+        android:fontFamily="@font/roboto_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
@@ -46,6 +47,7 @@
 
     <Button
         android:id="@+id/homeRoutinesButton"
+        android:fontFamily="@font/roboto_bold"
         android:layout_width="158dp"
         android:layout_height="51dp"
         android:layout_marginTop="36dp"
