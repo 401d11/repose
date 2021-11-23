@@ -1,0 +1,36 @@
+# this is an auto generated file. This will be overwritten
+query GetStretch($id: ID!) {
+  getStretch(id: $id) {
+    id
+    name
+    length
+    sets
+    reps
+    description
+    imageKey
+    muscleGroup
+    createdAt
+    updatedAt
+  }
+}
+query ListStretchs(
+  $filter: ModelStretchFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStretchs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      length
+      sets
+      reps
+      description
+      imageKey
+      muscleGroup
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
