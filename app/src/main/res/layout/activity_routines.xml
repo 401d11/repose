@@ -33,6 +33,7 @@
         android:id="@+id/startRoutine"
         android:layout_width="165dp"
         android:layout_height="91dp"
+        android:backgroundTint="#9948EA"
         android:text="@string/Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
