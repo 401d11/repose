@@ -12,7 +12,9 @@
         android:id="@+id/currentStretchFragmentTextView"
         android:layout_width="170dp"
         android:layout_height="75dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/hello_blank_fragment"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
