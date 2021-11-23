@@ -49,7 +49,7 @@ public class StretchPageActivity extends AppCompatActivity {
     TextView setsLeftTextView;
     TextView repsLeftTextView;
     TextView stretchDescription;
-    int currentReps = 1;
+    int currentReps = 9;
     int currentSets = 1;
     MediaPlayer notifymp = new MediaPlayer();
     long delaytime = 1 * 1000;
@@ -81,7 +81,7 @@ public class StretchPageActivity extends AppCompatActivity {
                     delaytime = 1* 1000;
                     currentReps++;
                     if (currentReps > stretchList.get(currentStretchIndex).getReps()) {
-                        currentReps = 1;
+                        currentReps = 9;
                         currentSets++;
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
                         setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
