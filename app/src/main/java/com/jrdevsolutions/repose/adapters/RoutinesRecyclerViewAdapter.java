@@ -11,16 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
-import com.jrdevsolutions.repose.activities.RoutinesActivity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +26,13 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
     List<String> routines;
     public final static String TAG = "jrdevsolutions__repose_routinesrecyclerviewadapter";
     StretchRecyclerViewAdapter stretchRecyclerViewAdapter;
+    Button startRoutine;
 
-    public RoutinesRecyclerViewAdapter(AppCompatActivity associatedActivity, List<String> routines, StretchRecyclerViewAdapter stretchRecyclerViewAdapter) {
+    public RoutinesRecyclerViewAdapter(AppCompatActivity associatedActivity, List<String> routines, StretchRecyclerViewAdapter stretchRecyclerViewAdapter, Button startRoutine) {
         this.associatedActivity = associatedActivity;
         this.routines = routines;
         this.stretchRecyclerViewAdapter = stretchRecyclerViewAdapter;
+        this.startRoutine = startRoutine;
     }
 
     @NonNull
@@ -65,6 +64,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
                         runOnUiThread(() -> {
                             stretchRecyclerViewAdapter.setStretchList(stretchList);
                             stretchRecyclerViewAdapter.notifyDataSetChanged();
+                            startRoutine.setVisibility(View.VISIBLE);
                         });
                         Log.i(TAG, "success");
                     },
