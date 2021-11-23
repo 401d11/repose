@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ImageView appLogoImageView = findViewById(R.id.appLogoImageView);
-        appLogoImageView.setImageResource(R.drawable.reposelogo);
+        appLogoImageView.setImageResource(R.drawable.roundlogo);
 
         // Routines Activity
         Button homeRoutinesButton = findViewById(R.id.homeRoutinesButton);
