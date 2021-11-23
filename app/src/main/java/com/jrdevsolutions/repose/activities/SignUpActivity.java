@@ -26,7 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         ImageView appLogoImageView = findViewById(R.id.signUpLogoImageView);
-        appLogoImageView.setImageResource(R.drawable.reposelogo);
+        appLogoImageView.setImageResource(R.drawable.roundlogo);
 
         Button signUpButton = findViewById(R.id.loginButton);
         signUpButton.setOnClickListener( view -> {

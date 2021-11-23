@@ -22,7 +22,7 @@ public class SignUpVerifyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_verify);
 
         ImageView appLogoImageView = findViewById(R.id.verifyLogoImageView);
-        appLogoImageView.setImageResource(R.drawable.reposelogo);
+        appLogoImageView.setImageResource(R.drawable.roundlogo);
 
         Intent intent = getIntent();
         EditText verifyEmailEditText = findViewById(R.id.verifyEmailEditText);
