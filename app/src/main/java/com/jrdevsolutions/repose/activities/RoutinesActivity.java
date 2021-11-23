@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
 import android.widget.Button;
 import com.amplifyframework.datastore.generated.model.Stretch;
@@ -42,6 +43,7 @@ public class RoutinesActivity extends AppCompatActivity {
         routinesRecyclerViewAdapter = new RoutinesRecyclerViewAdapter(this, routineNames, stretchRecyclerViewAdapter);
         routinesRecyclerView.setAdapter(routinesRecyclerViewAdapter);
 
+
         Button startRoutine = findViewById(R.id.startRoutine);
         startRoutine.setOnClickListener(view -> {
             Intent intent = new Intent(RoutinesActivity.this, StretchPageActivity.class);
@@ -52,6 +54,13 @@ public class RoutinesActivity extends AppCompatActivity {
             }
             intent.putStringArrayListExtra("Stretches", stretchIds);
             startActivity(intent);
+        });
+
+        Button backButton = findViewById(R.id.routineActivityBackButton);
+        backButton.setOnClickListener(view -> {
+            Intent backIntent = new Intent(RoutinesActivity.this, MainActivity.class);
+            startActivity(backIntent);
+
         });
     }
 }
