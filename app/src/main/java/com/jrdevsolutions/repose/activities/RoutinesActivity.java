@@ -3,17 +3,14 @@ package com.jrdevsolutions.repose.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
 import android.widget.Button;
-
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 import com.jrdevsolutions.repose.adapters.RoutinesRecyclerViewAdapter;
 import com.jrdevsolutions.repose.adapters.StretchRecyclerViewAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
