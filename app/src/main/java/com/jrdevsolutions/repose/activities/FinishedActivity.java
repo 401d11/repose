@@ -1,7 +1,5 @@
 package com.jrdevsolutions.repose.activities;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

@@ -6,18 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.widget.Button;
 
-import com.amplifyframework.api.graphql.model.ModelQuery;
-import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
 import com.jrdevsolutions.repose.adapters.RoutinesRecyclerViewAdapter;
 import com.jrdevsolutions.repose.adapters.StretchRecyclerViewAdapter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

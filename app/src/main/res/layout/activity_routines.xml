@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.RoutinesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,4 +39,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.821" />
+
+    <TextView
+        android:id="@+id/routineCategoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Category"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/routinesRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/routinesRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/routinesRecyclerView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/routineStretchTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Stretch"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/routineCategoryTextView"
+        app:layout_constraintEnd_toEndOf="@+id/stretchesRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/stretchesRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/routineCategoryTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

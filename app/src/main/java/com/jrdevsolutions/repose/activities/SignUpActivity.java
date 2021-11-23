@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,9 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        ImageView appLogoImageView = findViewById(R.id.signUpLogoImageView);
+        appLogoImageView.setImageResource(R.drawable.reposelogo);
 
         Button signUpButton = findViewById(R.id.loginButton);
         signUpButton.setOnClickListener( view -> {

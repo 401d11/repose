@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ImageView appLogoImageView = findViewById(R.id.loginLogoImageView);
+        appLogoImageView.setImageResource(R.drawable.reposelogo);
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener( view -> {
