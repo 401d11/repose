@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amplifyframework.core.Amplify;
@@ -19,6 +20,9 @@ public class SignUpVerifyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_verify);
+
+        ImageView appLogoImageView = findViewById(R.id.verifyLogoImageView);
+        appLogoImageView.setImageResource(R.drawable.reposelogo);
 
         Intent intent = getIntent();
         EditText verifyEmailEditText = findViewById(R.id.verifyEmailEditText);

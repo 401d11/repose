@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -48,10 +49,12 @@ public class StretchPageActivity extends AppCompatActivity {
     TextView stretchDescription;
     int currentReps = 10;
     int currentSets = 1;
+    MediaPlayer notifymp = new MediaPlayer();
+    long delaytime = 1 * 1000;
+    boolean isStretching = false;
 
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
-
 
         @SuppressLint("DefaultLocale")
         @Override
@@ -72,7 +75,9 @@ public class StretchPageActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
+                    notifymp.start();
                     millisLeft = (5 * 1000) + 999;
+                    delaytime = 1* 1000;
                     timerTextView.setText("0" + Long.toString(min) + ":" + Long.toString(sec) + "s");
                     currentReps++;
                     if (currentReps > stretchList.get(currentStretchIndex).getReps()) {
@@ -85,7 +90,6 @@ public class StretchPageActivity extends AppCompatActivity {
                         currentSets = 1;
                         currentStretchIndex++;
                         if (currentStretchIndex == stretchList.size()) {
-//                            timerButton.setText("Start");
                             Intent intent = new Intent(StretchPageActivity.this, FinishedActivity.class);
                             startActivity(intent);
                         } else {
@@ -95,11 +99,12 @@ public class StretchPageActivity extends AppCompatActivity {
                             setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
                             getImageFileFromS3AndSetImageView(stretchList.get(currentStretchIndex).getImageKey());
                             playString("The next stretch is " + stretchList.get(currentStretchIndex).getName());
+                            delaytime = 3 * 1000;
                         }
                     }
                     repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
                     setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
-                    timerHandler.postDelayed(timerRunnable, 000);
+                    timerHandler.postDelayed(timerRunnable, delaytime);
                 }
             }.start();
         }
@@ -109,6 +114,7 @@ public class StretchPageActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretch_page);
+        notifymp = MediaPlayer.create(this, R.raw.bell);
 
         Intent intent = getIntent();
         ArrayList<String> stretchIdList = intent.getStringArrayListExtra("Stretches");
@@ -133,6 +139,7 @@ public class StretchPageActivity extends AppCompatActivity {
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(0).getReps());
                         setsLeftTextView.setText(currentSets + " / " + stretchList.get(0).getSets());
                         stretchDescription.setText(stretchList.get(0).getDescription());
+                        stretchDescription.setMovementMethod(new ScrollingMovementMethod());
                         playString("The first stretch will be  " + stretchList.get(0).getName());
                     });
                 },
@@ -145,6 +152,7 @@ public class StretchPageActivity extends AppCompatActivity {
 
         Button endButton = findViewById(R.id.endButton);
         endButton.setOnClickListener(view -> {
+            timerPause();
             Intent routinesActivityIntent = new Intent(this, RoutinesActivity.class);
             startActivity(routinesActivityIntent);
         });
@@ -153,15 +161,18 @@ public class StretchPageActivity extends AppCompatActivity {
         timerButton.setText(R.string.Start);
         timerButton.setOnClickListener(view -> {
             if(timerButton.getText().equals("Start")){
+                isStretching = true;
                 Log.i("Started", timerButton.getText().toString());
                 timerButton.setText(R.string.Pause);
-                timerHandler.postDelayed(timerRunnable, 5000);
+                timerHandler.postDelayed(timerRunnable, delaytime);
                 Toast.makeText(StretchPageActivity.this, "Your stretch will begin in 5 seconds!", Toast.LENGTH_LONG).show();
             } else if (timerButton.getText().equals("Pause")){
+                isStretching = false;
                 Log.i("Paused", timerButton.getText().toString());
                 timerButton.setText(R.string.Resume);
                 timerPause();
             } else if (timerButton.getText().equals("Resume")){
+                isStretching = true;
                 timerButton.setText(R.string.Pause);
                 timerResume();
             }

@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.SignUpActivity">
-
-    <ImageView
-        android:id="@+id/loginImageView"
-        android:layout_width="320dp"
-        android:layout_height="230dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/logInHereTextView"
@@ -31,21 +20,20 @@
     <EditText
         android:id="@+id/loginEmailEditText"
         android:layout_width="wrap_content"
-        android:layout_marginTop="104dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="12dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpLogoImageView" />
 
     <EditText
         android:id="@+id/loginPasswordEditText"
@@ -75,5 +63,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPasswordEditText" />
+
+    <ImageView
+        android:id="@+id/signUpLogoImageView"
+        android:layout_width="320dp"
+        android:layout_height="230dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

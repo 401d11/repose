@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activities.LoginActivity">
 
 
 
+
     <ImageView
-        android:id="@+id/loginImageView"
+        android:id="@+id/loginLogoImageView"
         android:layout_width="320dp"
         android:layout_height="230dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,45 +25,26 @@
     <EditText
         android:id="@+id/loginEmailEditText"
         android:layout_width="wrap_content"
-        android:layout_marginTop="104dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="12dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginImageView" />
-
-    <EditText
-        android:id="@+id/loginPasswordEditText"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_height="60dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_lock_icon"
-        android:drawablePadding="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:ems="10"
-        android:hint="@string/Password"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/loginLogoImageView" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -78,6 +61,24 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.073" />
+
+    <EditText
+        android:id="@+id/loginPasswordEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="@string/Password"
+        android:inputType="textPassword"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmailEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
