@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null) {
             Intent goToLoginActivityIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(goToLoginActivityIntent);
-        } else {
-            TextView welcomeUserTextView = findViewById(R.id.welcomeUserTextView);
-//            welcomeUserTextView.setText(currentUser.getUsername());
         }
 
         ImageView appLogoImageView = findViewById(R.id.appLogoImageView);

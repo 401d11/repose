@@ -12,6 +12,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class StretchPageActivity extends AppCompatActivity {
     TextView setsLeftTextView;
     TextView repsLeftTextView;
     TextView stretchDescription;
-    int currentReps = 10;
+    int currentReps = 1;
     int currentSets = 1;
     MediaPlayer notifymp = new MediaPlayer();
     long delaytime = 1 * 1000;
@@ -67,7 +68,7 @@ public class StretchPageActivity extends AppCompatActivity {
                     min = (milliTillFinish / (1000 * 60));
                     sec = ((milliTillFinish / 1000) - min * 60);
 
-                    if(sec >= 10 && min == 0){
+                    if(sec >= 10){
                     timerTextView.setText("0" + Long.toString(min) + ":" + Long.toString(sec) + "s");
                     } else timerTextView.setText("0" + Long.toString(min) + ":0" + Long.toString(sec) + "s");
 
@@ -76,11 +77,11 @@ public class StretchPageActivity extends AppCompatActivity {
 
                 public void onFinish() {
                     notifymp.start();
-                    millisLeft = (5 * 1000) + 999;
+                    millisLeft = (stretchList.get(currentStretchIndex).getLength() * 1000) + 750;
                     delaytime = 1* 1000;
                     currentReps++;
                     if (currentReps > stretchList.get(currentStretchIndex).getReps()) {
-                        currentReps = 10;
+                        currentReps = 1;
                         currentSets++;
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
                         setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
@@ -91,6 +92,7 @@ public class StretchPageActivity extends AppCompatActivity {
                         if (currentStretchIndex == stretchList.size()) {
                             Intent intent = new Intent(StretchPageActivity.this, FinishedActivity.class);
                             startActivity(intent);
+                            return;
                         } else {
                             stretchNameTextView.setText(stretchList.get(currentStretchIndex).getName());
                             stretchDescription.setText(stretchList.get(currentStretchIndex).getDescription());
@@ -133,6 +135,7 @@ public class StretchPageActivity extends AppCompatActivity {
                     repsLeftTextView = findViewById(R.id.repsLeftTextView);
                     stretchDescription = findViewById(R.id.stretchDescription);
                     getImageFileFromS3AndSetImageView(stretchList.get(0).getImageKey());
+                    millisLeft = stretchList.get(0).getLength() * 1000 + 750;
                     runOnUiThread(() -> {
                         stretchNameTextView.setText(stretchList.get(0).getName());
                         repsLeftTextView.setText(currentReps + " / " + stretchList.get(0).getReps());
@@ -149,7 +152,7 @@ public class StretchPageActivity extends AppCompatActivity {
                 }
         );
 
-        timerTextView = (TextView) findViewById(R.id.timerTextView);
+        timerTextView = findViewById(R.id.timerTextView);
 
         Button endButton = findViewById(R.id.endButton);
         endButton.setOnClickListener(view -> {
@@ -158,12 +161,16 @@ public class StretchPageActivity extends AppCompatActivity {
             startActivity(routinesActivityIntent);
         });
 
+
+        Button skipButton = findViewById(R.id.skipButton);
+        skipButton.setVisibility(View.INVISIBLE);
         timerButton = findViewById(R.id.timerButton);
         timerButton.setText(R.string.Start);
         timerButton.setOnClickListener(view -> {
             if(timerButton.getText().equals("Start")){
                 Log.i("Started", timerButton.getText().toString());
                 timerButton.setText(R.string.Pause);
+                skipButton.setVisibility(View.VISIBLE);
                 timerHandler.postDelayed(timerRunnable, delaytime);
                 Toast.makeText(StretchPageActivity.this, "Your stretch will begin in 5 seconds!", Toast.LENGTH_LONG).show();
             } else if (timerButton.getText().equals("Pause")){
@@ -173,6 +180,31 @@ public class StretchPageActivity extends AppCompatActivity {
             } else if (timerButton.getText().equals("Resume")){
                 timerButton.setText(R.string.Pause);
                 timerResume();
+            }
+        });
+
+        skipButton.setOnClickListener( click -> {
+            if (!timerButton.getText().equals("Resume")) {
+                timerPause();
+            }
+            currentStretchIndex++;
+            if (currentStretchIndex == stretchList.size()) {
+                Intent finishedIntent = new Intent(StretchPageActivity.this, FinishedActivity.class);
+                startActivity(finishedIntent);
+            } else {
+                timerTextView.setText("00:00s");
+                millisLeft = (stretchList.get(currentStretchIndex).getLength() * 1000) + 750;
+                stretchNameTextView.setText(stretchList.get(currentStretchIndex).getName());
+                stretchDescription.setText(stretchList.get(currentStretchIndex).getDescription());
+                currentReps = 1;
+                currentSets = 1;
+                repsLeftTextView.setText(currentReps + " / " + stretchList.get(currentStretchIndex).getReps());
+                setsLeftTextView.setText(currentSets + " / " + stretchList.get(currentStretchIndex).getSets());
+                getImageFileFromS3AndSetImageView(stretchList.get(currentStretchIndex).getImageKey());
+                playString("The next stretch is " + stretchList.get(currentStretchIndex).getName());
+                delaytime = 3 * 1000;
+                timerButton.setText("Pause");
+                timerHandler.postDelayed(timerRunnable, delaytime);
             }
         });
     }
