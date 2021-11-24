@@ -32,4 +32,6 @@
     <string name="stretchName">Stretch Name</string>
     <string name="Category">Category</string>
     <string name="Stretch">Stretch</string>
+    <string name="back">Back</string>
+    <string name="Skip">Skip</string>
 </resources>

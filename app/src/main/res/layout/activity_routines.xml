@@ -33,18 +33,22 @@
         android:id="@+id/startRoutine"
         android:layout_width="165dp"
         android:layout_height="91dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/Start"
+        android:backgroundTint="#9948EA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <TextView
         android:id="@+id/routineCategoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Category"
+        android:textColor="#535353"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/routinesRecyclerView"
@@ -57,10 +61,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Stretch"
+        android:textColor="#535353"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/routineCategoryTextView"
         app:layout_constraintEnd_toEndOf="@+id/stretchesRecyclerView"
         app:layout_constraintStart_toStartOf="@+id/stretchesRecyclerView"
         app:layout_constraintTop_toTopOf="@+id/routineCategoryTextView" />
+
+    <Button
+        android:id="@+id/routineActivityBackButton"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:backgroundTint="#9948EA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startRoutine"
+        app:layout_constraintVertical_bias="0.263" />
 </androidx.constraintlayout.widget.ConstraintLayout>

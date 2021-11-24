@@ -9,9 +9,11 @@
 
     <TextView
         android:id="@+id/finishedTitletextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/GoodJob"
+        android:textAlignment="center"
+        android:textColor="#535353"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,9 +24,11 @@
 
     <Button
         android:id="@+id/finishedRestartButton"
+        android:fontFamily="@font/roboto_bold"
         android:layout_width="155dp"
         android:layout_height="44dp"
         android:layout_marginTop="256dp"
+        android:backgroundTint="#9948EA"
         android:text="@string/Restart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

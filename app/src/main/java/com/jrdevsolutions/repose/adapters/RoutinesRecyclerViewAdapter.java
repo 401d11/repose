@@ -2,6 +2,8 @@ package com.jrdevsolutions.repose.adapters;
 
 import static com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Stretch;
 import com.jrdevsolutions.repose.R;
-import com.jrdevsolutions.repose.activities.RoutinesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +26,13 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
     List<String> routines;
     public final static String TAG = "jrdevsolutions__repose_routinesrecyclerviewadapter";
     StretchRecyclerViewAdapter stretchRecyclerViewAdapter;
+    Button startRoutine;
 
-    public RoutinesRecyclerViewAdapter(AppCompatActivity associatedActivity, List<String> routines, StretchRecyclerViewAdapter stretchRecyclerViewAdapter) {
+    public RoutinesRecyclerViewAdapter(AppCompatActivity associatedActivity, List<String> routines, StretchRecyclerViewAdapter stretchRecyclerViewAdapter, Button startRoutine) {
         this.associatedActivity = associatedActivity;
         this.routines = routines;
         this.stretchRecyclerViewAdapter = stretchRecyclerViewAdapter;
+        this.startRoutine = startRoutine;
     }
 
     @NonNull
@@ -47,6 +49,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
         View routineNameFragment = holder.itemView;
         Button currentRoutineFragmentButton = routineNameFragment.findViewById(R.id.currentRoutineFragmentButton);
         currentRoutineFragmentButton.setText(routineName);
+        currentRoutineFragmentButton.setTypeface(Typeface.create("SANS_SERIF", Typeface.BOLD));
 
         currentRoutineFragmentButton.setOnClickListener(view -> {
             Amplify.API.query(
@@ -61,6 +64,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
                         runOnUiThread(() -> {
                             stretchRecyclerViewAdapter.setStretchList(stretchList);
                             stretchRecyclerViewAdapter.notifyDataSetChanged();
+                            startRoutine.setVisibility(View.VISIBLE);
                         });
                         Log.i(TAG, "success");
                     },
@@ -90,6 +94,7 @@ public class RoutinesRecyclerViewAdapter extends RecyclerView.Adapter<RoutinesRe
     }
 
     public static class RoutinesViewHolder extends RecyclerView.ViewHolder {
+
         public RoutinesViewHolder(@NonNull View itemView){
             super(itemView);
         }

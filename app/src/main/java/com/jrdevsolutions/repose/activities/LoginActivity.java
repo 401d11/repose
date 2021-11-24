@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ImageView appLogoImageView = findViewById(R.id.loginLogoImageView);
-        appLogoImageView.setImageResource(R.drawable.reposelogo);
+        appLogoImageView.setImageResource(R.drawable.roundlogo);
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener( view -> {
